@@ -2,13 +2,15 @@ import Image from 'next/image';
 import useQuiosco from 'hooks/useQuiosco';
 
 export default function Categoria({ categoria }) {
-    // CONTEXT
+    // --- CONTEXTs --- //
     const { categoriaActual, handleClickCategoria } = useQuiosco();
-    // API
+    // --- --- --- --- --- //
+
+    // --- API --- //
     const { nombre, icono, id } = categoria;
+    // --- --- --- --- --- //
 
     return (
-        // CATEGORIA
         <div
             className={`${
                 categoriaActual?.id === id ? 'bg-amber-400' : ''
@@ -17,6 +19,7 @@ export default function Categoria({ categoria }) {
         >
             {/* Icono */}
             <Image
+                className="h-14 w-auto"
                 src={`/assets/img/icono_${icono}.svg`}
                 width={70}
                 height={70}

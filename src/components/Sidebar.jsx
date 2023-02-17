@@ -9,7 +9,8 @@ export default function Sidebar() {
         <>
             {/* Logo */}
             <Image
-                className="m-auto"
+                className="m-auto h-28 w-auto"
+                priority={true}
                 width={100}
                 height={300}
                 src="/assets/img/logo.svg"
