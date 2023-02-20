@@ -25,7 +25,7 @@ export default function Total() {
                         Nombre Completo
                     </label>
                     <input
-                        className="bg-gray-200 w-full lg:w-1/3 mt-3 p-2 rounded-md"
+                        className="bg-gray-200 w-full lg:w-1/2 mt-3 p-2 rounded-md"
                         type="text"
                         id="nombre"
                         value={nombre}
@@ -48,28 +48,28 @@ export default function Total() {
                     nombre.length < 3 ? (
                         <>
                             {pedido.length === 0 ? (
-                                <p className="bg-red-600 rounded text-white uppercase text-center font-bold mb-4 p-1">
+                                <p className="bg-red-600 rounded text-white uppercase text-center font-bold mb-4 p-1 w-full lg:w-1/2">
                                     Debe tener al menos 1 producto en su pedido
                                 </p>
                             ) : (
                                 ''
                             )}
                             {nombre.length === 0 ? (
-                                <p className="bg-red-600 rounded text-white uppercase text-center font-bold mb-4 p-1">
+                                <p className="bg-red-600 rounded text-white uppercase text-center font-bold mb-4 p-1 w-full lg:w-1/2">
                                     Debe colocar su nombre completo
                                 </p>
                             ) : (
                                 ''
                             )}
                             <input
-                                className="bg-gray-400 cursor-not-allowed text-center w-full md:w-auto px-5 py-2 rounded uppercase font-bold text-white"
+                                className="bg-gray-400 cursor-not-allowed text-center px-5 py-2 rounded uppercase font-bold text-white w-full lg:w-1/2"
                                 value="Confirmar Pedido"
                                 disabled
                             />
                         </>
                     ) : (
                         <input
-                            className="bg-indigo-600 cursor-pointer text-center w-full md:w-auto px-5 py-2 rounded uppercase font-bold text-white"
+                            className="bg-indigo-600 cursor-pointer text-center px-5 py-2 rounded uppercase font-bold text-white w-full lg:w-1/2"
                             value="Confirmar Pedido"
                             type="submit"
                         />

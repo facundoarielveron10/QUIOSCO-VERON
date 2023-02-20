@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -13,6 +14,10 @@ const QuioscoProvider = ({ children }) => {
     const [pedido, setPedido] = useState([]);
     const [nombre, setNombre] = useState('');
     const [total, setTotal] = useState(0);
+    // --- --- --- --- --- //
+
+    // --- ROUTER --- //
+    const router = useRouter();
     // --- --- --- --- --- //
 
     // --- FUNCIONES --- //
@@ -68,6 +73,35 @@ const QuioscoProvider = ({ children }) => {
 
     const colocarOrden = async (e) => {
         e.preventDefault();
+
+        try {
+            await axios.post('/api/ordenes', {
+                pedido,
+                nombre,
+                total,
+                fecha: new Date().toLocaleDateString('es-AR', {
+                    day: 'numeric',
+                    month: 'long',
+                }),
+            });
+
+            // --- REINICIAR APP --- //
+            setCategoriaActual(categorias[0]);
+            setPedido([]);
+            setNombre('');
+            setTotal(0);
+            // --- --- --- --- --- //
+
+            toast.success(
+                <span>&#128081; Pedido Realizado Correctamente</span>
+            );
+
+            setTimeout(() => {
+                router.push('/');
+            }, 3000);
+        } catch (error) {
+            console.log(error);
+        }
     };
     // --- --- --- --- --- //
 
