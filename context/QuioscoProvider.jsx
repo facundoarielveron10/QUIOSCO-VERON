@@ -11,6 +11,8 @@ const QuioscoProvider = ({ children }) => {
     const [producto, setProducto] = useState({});
     const [modal, setModal] = useState(false);
     const [pedido, setPedido] = useState([]);
+    const [nombre, setNombre] = useState('');
+    const [total, setTotal] = useState(0);
     // --- --- --- --- --- //
 
     // --- FUNCIONES --- //
@@ -63,6 +65,10 @@ const QuioscoProvider = ({ children }) => {
         );
         setPedido(pedidoActualizado);
     };
+
+    const colocarOrden = async (e) => {
+        e.preventDefault();
+    };
     // --- --- --- --- --- //
 
     // --- EFECTOS --- //
@@ -73,6 +79,14 @@ const QuioscoProvider = ({ children }) => {
     useEffect(() => {
         setCategoriaActual(categorias[0]);
     }, [categorias]);
+
+    useEffect(() => {
+        const nuevoTotal = pedido.reduce(
+            (total, producto) => producto.precio * producto.cantidad + total,
+            0
+        );
+        setTotal(nuevoTotal);
+    }, [pedido]);
     // --- --- --- --- --- //
 
     return (
@@ -89,6 +103,10 @@ const QuioscoProvider = ({ children }) => {
                 pedido,
                 handleEditarCantidad,
                 handleEliminarProducto,
+                nombre,
+                setNombre,
+                colocarOrden,
+                total,
             }}
         >
             {children}
