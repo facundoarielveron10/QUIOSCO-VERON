@@ -32,7 +32,7 @@ const QuioscoProvider = ({ children }) => {
         setModal(!modal);
     };
 
-    const handleAgregarPedido = ({ categoriaId, imagen, ...producto }) => {
+    const handleAgregarPedido = ({ categoriaId, ...producto }) => {
         if (pedido.some((productoState) => productoState.id === producto.id)) {
             // Actualizar la Cantidad
             const pedidoActualizado = pedido.map((productoState) =>
@@ -46,6 +46,22 @@ const QuioscoProvider = ({ children }) => {
         }
 
         setModal(false);
+    };
+
+    const handleEditarCantidad = (id) => {
+        const productoActualizar = pedido.filter(
+            (producto) => producto.id === id
+        );
+        setProducto(productoActualizar[0]);
+
+        setModal(!modal);
+    };
+
+    const handleEliminarProducto = (id) => {
+        const pedidoActualizado = pedido.filter(
+            (producto) => producto.id !== id
+        );
+        setPedido(pedidoActualizado);
     };
     // --- --- --- --- --- //
 
@@ -71,6 +87,8 @@ const QuioscoProvider = ({ children }) => {
                 handleChangeModal,
                 handleAgregarPedido,
                 pedido,
+                handleEditarCantidad,
+                handleEliminarProducto,
             }}
         >
             {children}

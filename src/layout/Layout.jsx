@@ -2,6 +2,7 @@ import useQuiosco from 'hooks/useQuiosco';
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
 import Sidebar from '@/components/Sidebar';
+import Pasos from '@/components/Pasos';
 import Modal from 'react-modal';
 import ModalProducto from '@/components/ModalProducto';
 
@@ -41,7 +42,10 @@ export default function Layout({ children, title }) {
                 </aside>
                 {/* Cuerpo */}
                 <main className="md:w-8/12 xl:w-3/4 2xl:w-4/5 h-screen md:overflow-y-scroll">
-                    <div className="p-10">{children}</div>
+                    <div className="p-10">
+                        <Pasos />
+                        {children}
+                    </div>
                 </main>
             </div>
 

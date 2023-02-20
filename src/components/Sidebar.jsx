@@ -3,7 +3,9 @@ import useQuiosco from 'hooks/useQuiosco';
 import Categoria from './Categoria';
 
 export default function Sidebar() {
+    // --- CONTEXTs --- //
     const { categorias } = useQuiosco();
+    // --- --- --- --- --- //
 
     return (
         <>
